@@ -9,7 +9,6 @@ def init_db():
     conn = sqlite3.connect('inventory.db')
     c = conn.cursor()
     
-    # 1. Create Users Table
     c.execute('''
         CREATE TABLE IF NOT EXISTS users (
             username TEXT PRIMARY KEY,
@@ -17,8 +16,7 @@ def init_db():
             role TEXT NOT NULL
         )
     ''')
-    
-    # Create Assets Table
+
     c.execute('''
         CREATE TABLE IF NOT EXISTS assets (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -31,7 +29,6 @@ def init_db():
         )
     ''')
     
-    # Create Bookings Table
     c.execute('''
         CREATE TABLE IF NOT EXISTS bookings (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -45,13 +42,11 @@ def init_db():
         )
     ''')
     
-    # --- DEFAULT ADMIN CREATION ---
-    # We inject a default admin so you can actually log in the first time!
+    #DEFAULT ADMIN CREATION
     c.execute("SELECT * FROM users WHERE username='admin'")
     if not c.fetchone():
         c.execute("INSERT INTO users (username, password, role) VALUES (?, ?, ?)", 
                   ('admin', hash_password('admin123'), 'Administrator'))
-    # Create Audit Logs Table (BONUS FEATURE)
     c.execute('''
         CREATE TABLE IF NOT EXISTS audit_logs (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
