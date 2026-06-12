@@ -52,6 +52,10 @@ Role-Based Authentication:** Secure, session-based login system separating 'Admi
 **Security & Compliance (Bonus)
 Immutable Audit Logging:** A background security helper function silently records all critical state mutations (Asset Creation, Deletion, Booking Approvals, and Returns) with timestamps and executing user IDs to an audit_logs database table, viewable via the Admin dashboard.
 
+## Demo Video
+I have added the video on github as well as uploaded on youtube
+YT link:https://youtu.be/ubjH1OBW6gI
+
 ************************************************************
 
 
